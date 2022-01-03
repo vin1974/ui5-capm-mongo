@@ -1,0 +1,145 @@
+<mvc:View 
+	xmlns="sap.m" 	
+	xmlns:core="sap.ui.core" 
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" 	
+	controllerName="anubhav.app.controller.Empty"
+	displayBlock="true"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="I am an Empty View">
+				<content>
+					<Table
+						id="countTable"
+						width="auto"
+						items="{
+							path: '/data',
+							sort: {
+								path: '_id'
+							}
+						}"
+						growing="true"
+						growingScrollToLoad="true">
+					<headerToolbar>
+						<Toolbar>
+							<Title id="tableHeader" text="Counts"/>
+							<ToolbarSpacer />
+							<SearchField
+								id="searchField"
+								tooltip="{i18n>worklistSearchTooltip}"
+								search=".onSearch"
+								width="auto">
+							</SearchField>
+						</Toolbar>
+					</headerToolbar>
+
+					<columns>
+						<Column id="idCountry">
+							<Text
+								id="countryTitle"
+								text="Country"/>
+						</Column>
+						<Column
+							id="idCount"
+							demandPopin="false"
+							minScreenWidth="Tablet">
+							<Text text="Count"/>
+						</Column>			
+					</columns>
+
+					<items>
+						<ColumnListItem
+							type="Navigation"
+							press=".onPress">
+							<cells>
+								<ObjectIdentifier
+									title="{_id}"/>
+								<Text text = "{count}"/>
+								
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+
+				<!-- <l:FixFlex id='chartFixFlex' minFlexSize="250">
+					<l:flexContent>
+						<viz:Popover id="idPopOver"></viz:Popover> -->
+				<l:BlockLayout background="Dashboard" visible="true">
+					<l:content>
+						<l:BlockLayoutRow scrollable="false">
+							<l:BlockLayoutCell id="Cell1" width="1">
+								<l:content>
+									<viz:VizFrame id="idVizFrame1" uiConfig="{applicationSet:'fiori'}" vizType='bar'>
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{local>/data}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="Country"
+														value="{_id}" />
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Count"
+														value="{count}" />
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+
+										<viz:feeds>
+											<viz.feeds:FeedItem id='valueAxisFeedBar' uid="valueAxis" type="Measure"
+												values="Count" />
+											<viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+												values="Country" />
+										</viz:feeds>
+									</viz:VizFrame>
+
+								</l:content>							
+							</l:BlockLayoutCell>	
+
+							<l:BlockLayoutCell id="Cell2" width="1">
+								<l:content>
+									<viz:VizFrame id="idVizFrame2" uiConfig="{applicationSet:'fiori'}"
+										height='100%' width="100%" vizType='pie'>
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{local>/data}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="Country"
+														value="{_id}" />
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Count"
+														value="{count}" />
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+
+										<viz:feeds>
+											<viz.feeds:FeedItem uid="size" type="Measure"
+												values="Count" />
+											<viz.feeds:FeedItem uid="color" type="Dimension"
+												values="Country" />
+										</viz:feeds>
+									</viz:VizFrame>								
+								</l:content>							
+							</l:BlockLayoutCell>						
+						</l:BlockLayoutRow>
+					</l:content>
+					
+				</l:BlockLayout>
+
+						
+
+
+					<!-- </l:flexContent>
+				</l:FixFlex> -->
+
+
+
+
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

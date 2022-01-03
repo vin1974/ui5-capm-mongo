@@ -1,0 +1,14 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+    <SelectDialog
+        id="popup"
+        multiSelect="true"
+        confirm=".onConfirmPopup"
+    >
+        <items>
+            
+        </items>
+    </SelectDialog>
+</c:FragmentDefinition>

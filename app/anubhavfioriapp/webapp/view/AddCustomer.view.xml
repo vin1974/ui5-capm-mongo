@@ -1,0 +1,74 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    controllerName="anubhav.app.controller.AddCustomer">
+    <Page>
+        <Text text="hi there..." />
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormChange354"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Create New Project"
+                labelSpanXL='3'
+                labelSpanL='3'
+                labelSpanM='3'
+                labelSpanS='3'
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="4"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+                >
+                <f:content>
+                    <Label text="Company Name" />
+                    <Input id='PIDC' value="{local>/customerData/companyName}" />
+                    <Label text="Contact Name" />
+                    <Input id='PID' value="{local>/customerData/name}" 
+                        showValueHelp="true"
+                        valueHelpRequest=".onSupplierF4"/>
+                    <Label text="Type" />
+                    <Select selectedKey="{local>/customerData/type}">
+                        <core:Item key="C" text="Customer" />
+                        <core:Item key="S" text="Supplier" />
+                        <core:Item key="O" text="Other" />
+                    </Select>
+                    <Label text="Email Id" />
+                    <Input value="{local>/customerData/emailId}" >
+                        <layoutData>
+                            <l:GridData span="XL1 L2 M2 S4" />
+                        </layoutData>
+                    </Input>
+
+                    <Label text="Address/Contact" />
+                    <Input id='ADDRID' value="{local>/customerData/address}" />
+                    <Input id='CNOID' value="{local>/customerData/contactNo}" />
+                    <Label text="Country" />
+                    <Select selectedKey="{local>/customerData/country}">
+                        <core:Item key="US" text="United States" />
+                        <core:Item key="KO" text="Korea" />
+                        <core:Item key="FR" text="France" />
+                    </Select>
+                </f:content>
+            </f:SimpleForm>
+
+        </VBox>
+
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button id="idSave" text="Save" icon="sap-icon://save" press=".onSave" />
+                <Button id="idDelete" text="Delete" icon="sap-icon://delete" type="Reject" press=".onDelete" />
+                <Button id="idClear" text="Clear" type="Emphasized" press=".onClear" />
+            </Toolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>
